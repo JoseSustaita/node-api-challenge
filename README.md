@@ -40,13 +40,22 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+  Express is a framework that you can use to easily make a RESTful API serverr.
+  Express routes work by exporting the modules into another module and being able to use their functions and property there. Sort of like importing and exporting react components.
+
 - [ ] Describe Middleware?
+
+  Middleware is a bridge between software. It is able to intercept the code that is running and then dependent on that execute another piece of code. Ex. State management middleware
 
 - [ ] Describe a Resource?
 
 - [ ] What can the API return to help clients know if a request was successful?
 
+We can return status codes that can let us know if the request was successful or not.
+
 - [ ] How can we partition our application into sub-applications?
+
+By exporting and importing express modules.
 
 ## Minimum Viable Product
 
