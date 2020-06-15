@@ -48,6 +48,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
   Middleware is a bridge between software. It is able to intercept the code that is running and then dependent on that execute another piece of code. Ex. State management middleware
 
 - [ ] Describe a Resource?
+      This is usually an object that can be used to send up as a response in an api.
 
 - [ ] What can the API return to help clients know if a request was successful?
 

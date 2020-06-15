@@ -1,6 +1,6 @@
 const express = require("express");
 
-const ah = require("./data//helpers/actionModel");
+const actionM = require("./data//helpers/actionModel");
 
 const router = express.Router();
 
@@ -13,7 +13,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  ah.get(req.params.id)
+  actionM
+    .get(req.params.id)
     .then((action) => {
       res.status(200).json(req.action);
     })
@@ -26,14 +27,16 @@ router.get("/:id", (req, res) => {
 //POST
 
 router.post("/", (req, res) => {
-  ah.get()
+  actionM
+    .get()
     .then((action) => {
       if (!req.body.project_id || !req.body.description || req.body.completed) {
         res.status(400).json({
           Message: "missing a field check the description key",
         });
       } else {
-        ah.insert(req.body)
+        actionM
+          .insert(req.body)
           .then((action) => {
             res.status(201).json(action);
           })
@@ -52,7 +55,8 @@ router.post("/", (req, res) => {
 //PUT
 
 router.put("/:id", (req, res) => {
-  ah.get(req.params.id)
+  actionM
+    .get(req.params.id)
     .then((action) => {
       if (action.length === 0) {
         res.status(404).json({
@@ -67,7 +71,8 @@ router.put("/:id", (req, res) => {
           Message: "missing a field",
         });
       } else {
-        ah.update(req.params.id, req.body)
+        actionM
+          .update(req.params.id, req.body)
           .then((action) => {
             res.status(201).json(req.body);
           })
@@ -86,7 +91,7 @@ router.put("/:id", (req, res) => {
 //Delete
 
 router.delete("/:id", (req, res) => {
-  ah.remove(req.params.id).then((action) => {
+  actionM.remove(req.params.id).then((action) => {
     res
       .status(200)
       .json({ message: "project has been deleted", project: req.action });
@@ -95,7 +100,8 @@ router.delete("/:id", (req, res) => {
 
 function validateId(req, res, next) {
   const id = req.params.id;
-  ah.get(id)
+  actionM
+    .get(id)
     .then((action) => {
       if (!action) {
         res.status(400).json({
